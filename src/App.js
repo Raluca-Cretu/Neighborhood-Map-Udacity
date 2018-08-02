@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {GoogleApiWrapper} from 'google-maps-react';
 import './App.css';
+import MapContainer from './MapContainer'
 
 class App extends Component {
   render() {
@@ -11,8 +12,8 @@ class App extends Component {
                 <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
           </svg>
         </a>
-        <h1 className="heading" role="title"> Google Maps API for Schorndorf, Germany </h1>
-       <MapContainer/>
+        <h1 className="heading" > Google Maps API for Schorndorf, Germany </h1>
+        <MapContainer google={this.props.google}/>
       </div>
     );
   }
