@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import ListPlaces from './ListPlaces'
 
 
 class MapContainer extends Component {
@@ -140,7 +140,7 @@ class MapContainer extends Component {
         return markerImage;
     }
 
-
+    //after clicking on another marker the previos clicked marker is set up to normal
     resetMarkers = () => {
         const { places, markers, normalIcon} = this.state
 
@@ -154,6 +154,7 @@ class MapContainer extends Component {
 	render() {
 		return (
 			<div className="main_wrapper">
+				<ListPlaces />
 				<div className="map" id="googleMap" role="application">
 			
 				</div>
