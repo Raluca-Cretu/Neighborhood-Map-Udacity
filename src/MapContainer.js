@@ -70,16 +70,27 @@ class MapContainer extends Component {
     	const {markers} = this.this.state
     	const {google} = this.this.props
     	const bounds = new google.maps.LatLngBounds()
+    	let i=0
+
 
     	this.state.places.forEach( (location) => {
+
 	    	const marker = new google.maps.Marker({
-	                position: new google.maps.LatLng( location.location.lat,  location.location.lng),
-	                map: this.map,
-	                title: location.name,
-	                index: i
-	            });
-	            i++
-	    }
+                position: new google.maps.LatLng( location.location.lat,  location.location.lng),
+                map: this.map,
+                title: location.name,
+                index: i
+	        })
+	        i++
+
+	        marker.addListener('click', () => {
+	        	const defaultIcon = marker.getIcon()//google map specific
+	    	})
+
+	    	this.setState((state) => ({
+                markers: [...state.markers, marker]
+            }))
+    	})
     }
 
 
@@ -87,7 +98,8 @@ class MapContainer extends Component {
 	render() {
 		return (
 			<div className="main_wrapper">
-				<div className="map" id="googleMap"> 
+				<div className="map" id="googleMap" role="application">
+			
 				</div>
 			</div>
 		)
