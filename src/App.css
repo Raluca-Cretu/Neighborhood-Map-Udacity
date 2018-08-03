@@ -30,8 +30,10 @@
 .heading {
   margin: 0;
   text-align: center;
-  background-color: #cddc39;
   width: 100%;
+  display: inline;
+  font-size: 25px;
+  margin-left: 40px;
 }
 
 .google_map_wrapper {
@@ -45,8 +47,11 @@
 }
 
 .menu {
-  display: none;
+  display: block;
+  background-color: #cddc39;
 }
+
+
 
 @media screen and (max-width: 780px) {
    .hamburger-icon {
