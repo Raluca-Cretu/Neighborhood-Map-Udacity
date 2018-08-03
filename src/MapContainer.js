@@ -154,7 +154,7 @@ class MapContainer extends Component {
 	render() {
 		return (
 			<div className="main_wrapper">
-				<ListPlaces />
+				<ListPlaces places={this.addMarkers}/>
 				<div className="map" id="googleMap" role="application">
 			
 				</div>
