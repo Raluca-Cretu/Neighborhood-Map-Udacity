@@ -39,8 +39,8 @@ class MapContainer extends Component {
                this.setState({error: err.toString()})
             })
 
-            //this.setState({highlightedIcon: this.changeMarkerColor('e0ff25')})
-            //this.setState({normalIcon: this.changeMarkerColor('ea4335')})
+            this.setState({highlightedIcon: this.changeMarkerColor('e0ff25')})
+            this.setState({normalIcon: this.changeMarkerColor('ea4335')})
 
     }
 
@@ -96,7 +96,7 @@ class MapContainer extends Component {
                 if (infowindow) {
                     infowindow.close()
                 }
-                //this.reset.markers()
+                this.resetMarkers()
 
                 //add Ccontent to Info window
                 infowindow = new google.maps.InfoWindow({ //google map specific
@@ -127,6 +127,28 @@ class MapContainer extends Component {
         this.map.fitBounds(bounds)
     }
 
+	//google map specific function
+    changeMarkerColor = (markerColor) => {
+        const {google} = this.props
+        let markerImage = new google.maps.MarkerImage(
+          'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
+          '|40|_|%E2%80%A2',
+          new google.maps.Size(21, 34),
+          new google.maps.Point(0, 0),
+          new google.maps.Point(10, 34),
+          new google.maps.Size(21,34));
+        return markerImage;
+    }
+
+
+    resetMarkers = () => {
+        const { places, markers, normalIcon} = this.state
+
+        places.forEach((l,i) => {
+            markers[i].setIcon(normalIcon)
+            markers[i].setAnimation(null)
+        })
+    }
 
 
 	render() {
