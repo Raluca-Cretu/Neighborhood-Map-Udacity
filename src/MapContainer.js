@@ -10,11 +10,12 @@ class MapContainer extends Component {
 		mapError: null
 	}
 
-
+	//Fetch data from Foursquare 
 	componentDidMount() {
 		const url = 'https://api.foursquare.com/v2/venues/search?ll=48.8015423,9.52962&client_id=2ZMPRLINC4X0LQURACBFQUFWSWI55KVTBCBCG44RDEH3OJTW&client_secret=TS1ITUBV1K03MXUPFQDOFVZAEVF1GM45023JXVO5F1CT3SOI&v=20180801'
 
         fetch(url)
+        	// Check if the data is ok
             .then(data => {
                 if(data.ok) {
                   return data.json()
@@ -22,7 +23,7 @@ class MapContainer extends Component {
                   throw new Error(data.statusText)
                 }
             })
-
+            //Add the responses in the places array and call/ initialize the map
             .then(data => {
                 this.setState({places: data.response.venues})
                 this.loadMap()
@@ -64,6 +65,25 @@ class MapContainer extends Component {
             this.setState({mapError: "map error"})
         }
     }
+
+    addMarkers = () => {
+    	const {markers} = this.this.state
+    	const {google} = this.this.props
+    	const bounds = new google.maps.LatLngBounds()
+
+    	this.state.places.forEach( (location) => {
+	    	const marker = new google.maps.Marker({
+	                position: new google.maps.LatLng( location.location.lat,  location.location.lng),
+	                map: this.map,
+	                title: location.name,
+	                index: i
+	            });
+	            i++
+	    }
+    }
+
+
+
 	render() {
 		return (
 			<div className="main_wrapper">
