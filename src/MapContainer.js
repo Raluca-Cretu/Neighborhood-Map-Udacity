@@ -35,7 +35,7 @@ class MapContainer extends Component {
             })
 
             .catch(err => {
-                console.log(err)
+               console.log(err)
                this.setState({error: err.toString()})
             })
 
@@ -71,12 +71,12 @@ class MapContainer extends Component {
 
     addMarkers = () => {
     	//const {markers} = this.this.state
-    	const {google} = this.this.props
+    	const {google} = this.props
     	const bounds = new google.maps.LatLngBounds()
     	let {infowindow}    = this.state
     	let i=0
 
-
+    	// for each place in the array create a Marker
     	this.state.places.forEach( (location) => {
 
 	    	const marker = new google.maps.Marker({
@@ -87,6 +87,7 @@ class MapContainer extends Component {
 	        })
 	        i++
 
+	        // add an event Listener to open a InfoWindow when a Marker is clicked
 	        marker.addListener('click', () => {
 	        	const defaultIcon = marker.getIcon()//google map specific
 	        	const {highlightedIcon} = this.state
@@ -95,11 +96,11 @@ class MapContainer extends Component {
                 if (infowindow) {
                     infowindow.close()
                 }
-                this.reset_markers()
+                //this.reset.markers()
 
-                //Add Content to Info window
+                //add Ccontent to Info window
                 infowindow = new google.maps.InfoWindow({ //google map specific
-                    content:    location.name+" in  "+location.location.city
+                    content: location.name +" in  " + location.location.city
                 });
                 infowindow.open( this.map, marker)//google map specific
 
