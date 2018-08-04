@@ -157,7 +157,7 @@ class MapContainer extends Component {
 		return (
 			<div className="main_wrapper">
 				<ListPlaces markers={[markers]} />
-				<div className="map" id="googleMap" role="application">
+				<div className="map" id="googleMap" role="application" aria-label="Map showing places">
 				</div>
 			</div>
 		)
