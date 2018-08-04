@@ -15,7 +15,7 @@ class ListPlaces extends Component {
 		const markers = this.props.markers
 		const { places, query, infobox} = this.state
 
-		//if we have search, checkthe query name is in our List of places
+		//if we have search, check if the query name is in our List of places
 		if (query) {
             places.forEach((l,i) => {
                 if(l.name.toLowerCase().includes(query.toLowerCase())) {
@@ -34,9 +34,7 @@ class ListPlaces extends Component {
                 <input role="search" type='text' value={this.state.value} onChange={this.startSearch}/>
                 <div>
                     <ul className="places_list">
-                        {markers.filter(m => m.getVisible()).map((m, i) =>
-                            (<li role="link" className="location_item" key={i} data-placeid={m.index} tabIndex="0">{m.title}</li>))
-                        }
+                     
                     </ul>
                  </div>
             </div>
