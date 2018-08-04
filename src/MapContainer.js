@@ -152,11 +152,12 @@ class MapContainer extends Component {
 
 
 	render() {
+		const {markers} = this.props
+
 		return (
 			<div className="main_wrapper">
-				<ListPlaces places={this.addMarkers}/>
+				<ListPlaces markers={[markers]} />
 				<div className="map" id="googleMap" role="application">
-			
 				</div>
 			</div>
 		)
