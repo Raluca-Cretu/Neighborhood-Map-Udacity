@@ -30,19 +30,19 @@ class MapContainer extends Component {
             .then(data => {
                 this.setState({places: data.response.venues})
                 this.loadMap()
+                this.toggleList()
                 console.log(this.state.places)
             })
 
             .catch(err => {
-               console.log(err)
-               this.setState({error: err.toString()})
+                console.log(err)
+                this.setState({error: err.toString()})
             })
 
             this.setState({highlightedIcon: this.changeMarkerColor('e0ff25')})
             this.setState({normalIcon: this.changeMarkerColor('ea4335')})
 
     }
-
 
 
     loadMap() {
@@ -160,6 +160,20 @@ class MapContainer extends Component {
 	startSearch = (event) => {
 		this.setState({query: event.target.value})
 	}
+
+	toggleList = () => {
+        const {google,map} = this.props;
+        document.getElementById('sidebarToogle').addEventListener("click", function(){
+            const sidebar= document.getElementById('sidebarID');
+            if (sidebar.style.display === "none") {
+                sidebar.style.display = "block";
+            } else {
+                sidebar.style.display = "none";
+            }
+            google.maps.event.trigger(map, "resize");
+        });
+    }
+
 
 	render() {
 		const {places, query, markers, infowindow} = this.state

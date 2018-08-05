@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div className="google_map_wrapper" role="main">
-        <a className="menu" tabIndex="0">
+        <a className="menu" id="sidebarToogle" tabIndex="0">
           <svg className="hamburger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
           </svg>
