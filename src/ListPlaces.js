@@ -4,12 +4,18 @@ import React, {Component} from 'react'
 class ListPlaces extends Component {
 	
 	componentDidMounr() {
-		
+		this.onclickLocation(this.props)
 	}
 
-    startSearch = (event) => {
-		this.setState({query: event.target.value})
-	}
+    onclickLocation = (props) => {
+
+        document.querySelector('.places_list').addEventListener('click', function (e) {
+            if(e.target && e.target.nodeName === "LI") {
+                let marker_index=e.target.getAttribute('data-placeid');
+                props.callbackFromList(marker_index);
+            }
+        })
+    }
 
 	render () {
 		let markers = this.props.markersFromParent

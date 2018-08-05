@@ -150,6 +150,9 @@ class MapContainer extends Component {
         })
     }
 
+	startSearch = (event) => {
+		this.setState({query: event.target.value})
+	}
 
 	render() {
 		const {markers} = this.props
