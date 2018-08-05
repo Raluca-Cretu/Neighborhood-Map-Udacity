@@ -170,8 +170,8 @@ class MapContainer extends Component {
                 if(l.name.toLowerCase().includes(query.toLowerCase())) {
                     markers[i].setVisible(true)//google map specific
                 } else {
-                    if (infobox.marker === markers[i]){
-                        infobox.close()
+                    if (infowindow.marker === markers[i]){
+                        infowindow.close()
                     }
                     markers[i].setVisible(false)//google map specific
                 }
@@ -181,14 +181,20 @@ class MapContainer extends Component {
 		return (
 			<div className="main_wrapper">
 				<div className="sidebar" id="sidebarID">
-					<div className ="searchSidebarWrapper"
-						input className = "searcInput" aria-label="Input filter places:" type='text' value={this.state.value} onChange={this.startSearch}/>
+					<div
+						className ="searchSidebarWrapper"
+						input className = "searchInput"
+						aria-label="Input filter places:" 
+						type='text' value={this.state.value}
+						onChange={this.startSearch}
+						>
 					</div>
-					<ListPlaces markersFromParent={markers} callbackFromList={this.callbackFromList} />
+					< ListPlaces markersFromParent={markers} callbackFromList={this.callbackFromList} />
 				</div>
 
-				<div className="map" id="googleMap" role="application" aria-label="Map showing places">
+				<div className="map" id="googleMap" role="application" aria-label="Map showing places" >
 				</div>
+
 			</div>
 		)
 	}

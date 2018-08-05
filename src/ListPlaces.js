@@ -20,7 +20,6 @@ class ListPlaces extends Component {
 
 	render () {
 		let markers = this.props.markersFromParent
-		const {places, query, infobox} = this.state
 
 		return (
             <ul className="places_list" tabIndex="0" aria-label="List of favorites places">
