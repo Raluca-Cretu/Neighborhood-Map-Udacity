@@ -51,7 +51,6 @@
 
 .map {
   position: relative;
-  width: 60%;
   height: 100vh;
 }
 
@@ -64,27 +63,50 @@
 
 .hamburger-icon {
     width: 45px;
-    fill: #E0E0E0;
+    fill: #000000;
     position: relative;
+    cursor: pointer;
+    margin-left: 20px;
   }
 
 .sidebar {
-    width: 40%;
+    width: 50%;
     background-color: #666;
     height: 100vh;
     float: left;
+    overflow: auto;
+}
+
+#sidebarToogle{
+    float:left;
+}
+
+.places_list{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.places_list li {
+    padding: 2px 15px;
+}
+
+.places_list li:hover{
+    background-color: #cddc39;
 }
 
 .sidebar input {
   width: 100%;
   line-height: 0.8cm;
   border: 1px solid #f5f5f5;
-  font-size: 13px;
+  font-size: 14px;
   color: gray;
   background-image: url('http://i47.tinypic.com/r02vbq.png');
   background-repeat: no-repeat;
   background-position: left center;
   outline: 0;
+  padding-left: 48px;
 }
 
 .text-input ul {
@@ -99,38 +121,30 @@
   line-height: 2cm;
 }
 
+li:focus {
+  background-color: #9f8ef9;
+}
+
 @media screen and (min-width: 560px) {
-  .sidebar {
-    width: 30%;
-  }
-
-  .map {
-    width: 70%;
-  }
-
   .heading {
     font-size: 22px;
+  }
+  .sidebar {
+    width: 40%;
+  }
+  .places_list{
+    font-size: 14px;
   }
 }
 
 
 
 @media screen and (min-width: 800px) {
-  .sidebar {
-    width: 20%;
-  }
-
-  .map {
-    width: 80%;
-  }
-
   .heading {
     font-size: 28px;
   }
 
-}
-
-
-li:focus {
-  background-color: #9f8ef9;
+  .sidebar {
+    width: 40%;
+  }
 }

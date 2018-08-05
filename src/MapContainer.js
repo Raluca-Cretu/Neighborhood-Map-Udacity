@@ -181,13 +181,13 @@ class MapContainer extends Component {
 		return (
 			<div className="main_wrapper">
 				<div className="sidebar" id="sidebarID">
-					<div
-						className ="searchSidebarWrapper"
-						input className = "searchInput"
-						aria-label="Input filter places:" 
-						type='text' value={this.state.value}
-						onChange={this.startSearch}
-						>
+					<div className="searchsidebarWrapper">
+						<input
+							className = "searchInput"
+							aria-label="Input filter places:"
+							type='text' value={this.state.value}
+							onChange={this.startSearch}
+						/>
 					</div>
 					< ListPlaces markersFromParent={markers} callbackFromList={this.callbackFromList} />
 				</div>
