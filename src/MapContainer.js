@@ -31,7 +31,6 @@ class MapContainer extends Component {
                 this.setState({places: data.response.venues})
                 this.loadMap()
                 console.log(this.state.places)
-                //this.onclickLocation()
             })
 
             .catch(err => {
@@ -98,7 +97,7 @@ class MapContainer extends Component {
                 }
                 this.resetMarkers()
 
-                //add Ccontent to Info window
+                //add Content to Info window
                 infowindow = new google.maps.InfoWindow({ //google map specific
                     content: location.name +" in  " + location.location.city
                 });
@@ -150,13 +149,22 @@ class MapContainer extends Component {
         })
     }
 
+    callbackFromList = (marker_index) => {
+        const {markers} = this.state
+        const {infowindow} = this.state
+        const {google} = this.props
+        infowindow.close();
+        new google.maps.event.trigger( markers[marker_index], 'click' );//google map specific
+    }
+
 	startSearch = (event) => {
 		this.setState({query: event.target.value})
 	}
 
 	render() {
-		const {markers} = this.props
-				//if we have search, check if the query name is in our List of places
+		const {places, query, markers, infowindow} = this.state
+
+		//if we have search, check if the query name is in our List of places
 		if (query) {
             places.forEach((l,i) => {
                 if(l.name.toLowerCase().includes(query.toLowerCase())) {
@@ -172,10 +180,13 @@ class MapContainer extends Component {
 
 		return (
 			<div className="main_wrapper">
-				<div className="sidebar">
-				input aria-label="Input filter places:" type='text' value={this.state.value} onChange={this.startSearch}/>
+				<div className="sidebar" id="sidebarID">
+					<div className ="searchSidebarWrapper"
+						input className = "searcInput" aria-label="Input filter places:" type='text' value={this.state.value} onChange={this.startSearch}/>
+					</div>
+					<ListPlaces markersFromParent={markers} callbackFromList={this.callbackFromList} />
 				</div>
-				<ListPlaces markers={[markers]} />
+
 				<div className="map" id="googleMap" role="application" aria-label="Map showing places">
 				</div>
 			</div>

@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 
 
 class ListPlaces extends Component {
-	
-	componentDidMounr() {
+
+	componentDidMount() {
 		this.onclickLocation(this.props)
 	}
 
+	// when a place on the list is clicked pops up the marker
     onclickLocation = (props) => {
 
         document.querySelector('.places_list').addEventListener('click', function (e) {
