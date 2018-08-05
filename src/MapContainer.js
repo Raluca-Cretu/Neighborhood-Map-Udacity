@@ -153,9 +153,25 @@ class MapContainer extends Component {
 
 	render() {
 		const {markers} = this.props
+				//if we have search, check if the query name is in our List of places
+		if (query) {
+            places.forEach((l,i) => {
+                if(l.name.toLowerCase().includes(query.toLowerCase())) {
+                    markers[i].setVisible(true)//google map specific
+                } else {
+                    if (infobox.marker === markers[i]){
+                        infobox.close()
+                    }
+                    markers[i].setVisible(false)//google map specific
+                }
+            })
+        }
 
 		return (
 			<div className="main_wrapper">
+				<div className="sidebar">
+				input aria-label="Input filter places:" type='text' value={this.state.value} onChange={this.startSearch}/>
+				</div>
 				<ListPlaces markers={[markers]} />
 				<div className="map" id="googleMap" role="application" aria-label="Map showing places">
 				</div>
