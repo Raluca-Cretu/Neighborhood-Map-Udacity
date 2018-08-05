@@ -12,6 +12,7 @@ How to load the app right away:
 
 How to use the app:
 The app will load a map of the town Schorndorf with makers for places and as well a list of places in the sidebar. You can click on the marker to check the name of the place or you could click on the place inside the Sidebar and a marker for the place location will show up.
+The app has also a toggle function where the user can open/ close the sidebar for a better visibility of the map.
 
 
 Resources:

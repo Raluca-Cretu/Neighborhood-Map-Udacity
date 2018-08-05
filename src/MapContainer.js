@@ -10,7 +10,8 @@ class MapContainer extends Component {
 		error: null,
 		mapError: null,
 		infobox: new this.props.google.maps.InfoWindow(),
-		highlightedIcon: null
+		highlightedIcon: null,
+        query:''
 	}
 
 	//Fetch data from Foursquare 
@@ -72,7 +73,7 @@ class MapContainer extends Component {
     	//const {markers} = this.this.state
     	const {google} = this.props
     	const bounds = new google.maps.LatLngBounds()
-    	let {infowindow}    = this.state
+    	let {infowindow} = this.state
     	let i=0
 
     	// for each place in the array create a Marker
@@ -151,9 +152,9 @@ class MapContainer extends Component {
 
     callbackFromList = (marker_index) => {
         const {markers} = this.state
-        const {infowindow} = this.state
+        //const {infowindow} = this.state
         const {google} = this.props
-        infowindow.close();
+        //infowindow.close();
         new google.maps.event.trigger( markers[marker_index], 'click' );//google map specific
     }
 
@@ -162,7 +163,7 @@ class MapContainer extends Component {
 	}
 
 	toggleList = () => {
-        const {google,map} = this.props;
+        const {google,map} = this.props
         document.getElementById('sidebarToogle').addEventListener("click", function(){
             const sidebar= document.getElementById('sidebarID');
             if (sidebar.style.display === "none") {
@@ -184,7 +185,7 @@ class MapContainer extends Component {
                 if(l.name.toLowerCase().includes(query.toLowerCase())) {
                     markers[i].setVisible(true)//google map specific
                 } else {
-                    if (infowindow.marker === markers[i]){
+                    if (infowindow === markers[i]){
                         infowindow.close()
                     }
                     markers[i].setVisible(false)//google map specific
@@ -199,7 +200,8 @@ class MapContainer extends Component {
 						<input
 							className = "searchInput"
 							aria-label="Input filter places:"
-							type='text' value={this.state.value}
+							type='text'
+                            value={this.state.query}
 							onChange={this.startSearch}
 						/>
 					</div>
