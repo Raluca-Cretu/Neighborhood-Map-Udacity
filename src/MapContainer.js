@@ -18,6 +18,8 @@ class MapContainer extends Component {
 	componentDidMount() {
 		const url = 'https://api.foursquare.com/v2/venues/search?ll=48.8015423,9.52962&client_id=2ZMPRLINC4X0LQURACBFQUFWSWI55KVTBCBCG44RDEH3OJTW&client_secret=TS1ITUBV1K03MXUPFQDOFVZAEVF1GM45023JXVO5F1CT3SOI&v=20180801'
 
+
+
         fetch(url)
         	// Check if the data is ok
             .then(data => {
@@ -37,7 +39,7 @@ class MapContainer extends Component {
 
             .catch(err => {
                 console.log(err)
-                this.setState({error: err.toString()})
+                this.setState({error: "ForthSquare Data is not loading"})
             })
 
             this.setState({highlightedIcon: this.changeMarkerColor('e0ff25')})
@@ -177,7 +179,7 @@ class MapContainer extends Component {
 
 
 	render() {
-		const {places, query, markers, infowindow} = this.state
+		const {places, query, markers, infowindow, error} = this.state
 
 		//if we have search, check if the query name is in our List of places
 		if (query) {
@@ -193,7 +195,11 @@ class MapContainer extends Component {
             })
         }
 
-		return (
+        if (this.state.error) {
+            return (<div className="error_div">{error}</div>)
+        }
+
+        return (
 			<div className="main_wrapper" role="Complementary">
 				<div className="sidebar" id="sidebarID">
 					<div className="searchsidebarWrapper">

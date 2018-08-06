@@ -125,6 +125,15 @@ li:focus {
   background-color: #9f8ef9;
 }
 
+.error_div{
+    position: absolute;
+    background: red;
+    color: white;
+    padding: 20px;
+    top: 40%;
+    left: 40%;
+}
+
 @media screen and (min-width: 560px) {
   .heading {
     font-size: 22px;
