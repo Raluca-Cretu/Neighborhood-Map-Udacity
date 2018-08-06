@@ -8,18 +8,18 @@ class App extends Component {
   
   render() {
     return (
-      <div className="google_map_wrapper" role="main">
-        <div className="menu" tabIndex="0">
+      <main className="google_map_wrapper" role="main">
+        <section className="menu" tabIndex="0">
           <div id="sidebarToogle">
             <svg className="hamburger-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
             </svg>
           </div>
           <h1 className="heading" > Google Maps API for Schorndorf, Germany </h1>
-        </div>
+        </section>
         
         <MapContainer google={this.props.google}/>
-      </div>
+      </main>
     );
   }
 }

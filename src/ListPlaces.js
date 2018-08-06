@@ -25,7 +25,7 @@ class ListPlaces extends Component {
             <ul className="places_list" tabIndex="0" aria-label="List of favorites places">
             	{
                 	this.props.markersFromParent.filter(m => m.getVisible()).map((m, i) =>
-                    (<li role="link" className="location_item" key={i} data-placeid={m.index} tabIndex="0">{m.title}</li>))
+                    (<li role="button"className="location_item" key={i} data-placeid={m.index} tabIndex="0">{m.title}</li>))
                 }
             </ul>
         )

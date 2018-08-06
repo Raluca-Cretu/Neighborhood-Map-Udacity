@@ -194,11 +194,12 @@ class MapContainer extends Component {
         }
 
 		return (
-			<div className="main_wrapper">
+			<div className="main_wrapper" role="Complementary">
 				<div className="sidebar" id="sidebarID">
 					<div className="searchsidebarWrapper">
 						<input
 							className = "searchInput"
+                            role= "search"
 							aria-label="Input filter places:"
 							type='text'
                             value={this.state.query}

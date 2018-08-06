@@ -15,6 +15,34 @@ The app will load a map of the town Schorndorf with makers for places and as wel
 The app has also a toggle function where the user can open/ close the sidebar for a better visibility of the map.
 
 
+How to Load the App in Production Mode:
+- run the app in production mode locally run:
+
+```npm run build```
+
+Navigate to the build directory and run a localhost server. If you have Python 2.x installed you can run the Python Simple Server like this.
+
+```python -m SimpleHTTPServer 8080```
+
+
+For Python 3.x, the command is:
+
+```-m http.server 8080```
+
+In either case navigate to http://localhost:8000 in your browser.
+
+Or if you prefer you can use Node serve. If you do not have it installed you can install it with:
+
+```npm install -g serve```
+and then navigate into the build directory and run
+
+```serve -s```
+
+In this case the site will be hosted at http://localhost:5000
+
+You can confirm that the service worker is registered with this message in the console
+
+
 Resources:
 1. Create React App
 https://reactjs.org
