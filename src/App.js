@@ -3,6 +3,18 @@ import {GoogleApiWrapper} from 'google-maps-react';
 import './App.css';
 import MapContainer from './MapContainer'
 
+
+document.addEventListener("DOMContentLoaded", function(e) {
+  let scriptTag = document.getElementsByTagName('SCRIPT').item(1);
+  scriptTag.onerror = function(e) {
+    console.log('Ops! We cant access Google Maps API for now! Please try again later!')
+    let mapContainerElemt = document.querySelector('#root');
+    let erroElement = document.createElement('div');
+    erroElement.innerHTML = '<div class="error-msg">Ops! We cant access Google Maps API for now! Please try again later!</div>'
+    mapContainerElemt.appendChild(erroElement)
+  }
+})
+
 class App extends Component {
 
 

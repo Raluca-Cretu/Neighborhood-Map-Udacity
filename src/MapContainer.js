@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import ListPlaces from './ListPlaces'
 
-
 class MapContainer extends Component {
 
 	state = {
@@ -46,7 +45,9 @@ class MapContainer extends Component {
             window.gm_authFailure = () => {
                 this.setState({error: "Google Map authorization error. Please try refreshing the page or try later"})
             }
+
     }
+
 
 
     loadMap() {
@@ -81,7 +82,7 @@ class MapContainer extends Component {
     	let i=0
 
     	// for each place in the array create a Marker
-    	this.state.places.forEach( (location) => {
+    	this.state.places.forEach( (location, categories) => {
 
 	    	const marker = new google.maps.Marker({
                 position: new google.maps.LatLng( location.location.lat,  location.location.lng),
@@ -104,7 +105,7 @@ class MapContainer extends Component {
 
                 //add Content to Info window
                 infowindow = new google.maps.InfoWindow({ //google map specific
-                    content: location.name +" in Schorndorf" 
+                    content: location.name +" in Schorndorf "  + location.categories.name
                 });
                 infowindow.open( this.map, marker)//google map specific
 
@@ -203,7 +204,7 @@ class MapContainer extends Component {
 
         return (
 			<div className="main_wrapper" role="Complementary">
-				<div className="sidebar" id="sidebarID">
+                <div className="sidebar" id="sidebarID">
 					<div className="searchsidebarWrapper">
 						<input
 							className = "searchInput"
