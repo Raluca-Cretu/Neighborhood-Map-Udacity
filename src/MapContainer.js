@@ -18,8 +18,6 @@ class MapContainer extends Component {
 	componentDidMount() {
 		const url = 'https://api.foursquare.com/v2/venues/search?ll=48.8015423,9.52962&client_id=2ZMPRLINC4X0LQURACBFQUFWSWI55KVTBCBCG44RDEH3OJTW&client_secret=TS1ITUBV1K03MXUPFQDOFVZAEVF1GM45023JXVO5F1CT3SOI&v=20180801'
 
-
-
         fetch(url)
         	// Check if the data is ok
             .then(data => {
@@ -71,6 +69,7 @@ class MapContainer extends Component {
         }
     }
 
+
     addMarkers = () => {
     	//const {markers} = this.this.state
     	const {google} = this.props
@@ -102,7 +101,7 @@ class MapContainer extends Component {
 
                 //add Content to Info window
                 infowindow = new google.maps.InfoWindow({ //google map specific
-                    content: location.name +" in  " + location.location.city
+                    content: location.name +" in Schorndorf" 
                 });
                 infowindow.open( this.map, marker)//google map specific
 
@@ -176,8 +175,7 @@ class MapContainer extends Component {
             google.maps.event.trigger(map, "resize");
         });
     }
-
-
+    
 	render() {
 		const {places, query, markers, infowindow, error} = this.state
 
@@ -198,6 +196,7 @@ class MapContainer extends Component {
         if (this.state.error) {
             return (<div className="error_div">{error}</div>)
         }
+
 
         return (
 			<div className="main_wrapper" role="Complementary">

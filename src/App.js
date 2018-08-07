@@ -5,7 +5,12 @@ import MapContainer from './MapContainer'
 
 class App extends Component {
 
-  
+  componentDidMount() {
+    window.gm_authFailure = () => {
+       alert("Google Map authorization error. Please try refreshing the page or try later")
+     }
+ }
+
   render() {
     return (
       <main className="google_map_wrapper" role="main">
@@ -17,7 +22,7 @@ class App extends Component {
           </div>
           <h1 className="heading" > Google Maps API for Schorndorf, Germany </h1>
         </section>
-        
+
         <MapContainer google={this.props.google}/>
       </main>
     );
