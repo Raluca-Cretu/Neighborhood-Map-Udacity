@@ -131,7 +131,7 @@ li:focus {
     color: white;
     padding: 20px;
     top: 40%;
-    left: 40%;
+    left: 30%;
 }
 
 @media screen and (min-width: 560px) {

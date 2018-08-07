@@ -5,11 +5,6 @@ import MapContainer from './MapContainer'
 
 class App extends Component {
 
-  componentDidMount() {
-    window.gm_authFailure = () => {
-       alert("Google Map authorization error. Please try refreshing the page or try later")
-     }
- }
 
   render() {
     return (

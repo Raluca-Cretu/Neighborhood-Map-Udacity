@@ -37,12 +37,15 @@ class MapContainer extends Component {
 
             .catch(err => {
                 console.log(err)
-                this.setState({error: "ForthSquare Data is not loading"})
+                this.setState({error: "Foursquare Data is not loading"})
             })
 
             this.setState({highlightedIcon: this.changeMarkerColor('e0ff25')})
             this.setState({normalIcon: this.changeMarkerColor('ea4335')})
 
+            window.gm_authFailure = () => {
+                this.setState({error: "Google Map authorization error. Please try refreshing the page or try later"})
+            }
     }
 
 
