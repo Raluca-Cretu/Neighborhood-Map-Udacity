@@ -96,7 +96,21 @@ class MapContainer extends Component {
 	        marker.addListener('click', () => {
 	        	const defaultIcon = marker.getIcon()//google map specific
 	        	const {highlightedIcon} = this.state
+                let contentString = '<div tabindex="0" ><strong>Name:</strong> ' + location.name
+                    if(typeof location.location.city !=='undefined'){
+                        contentString = contentString +'</br> <strong>City:</strong> ' + location.location.city
+                    }else{
+                        contentString = contentString +' </br> <strong>City:</strong> Schorndorf'
+                    }
 
+                    if(typeof location.categories[0].name !=='undefined'){
+                        contentString = contentString+' </br> <strong>Type:</strong> '+ location.categories[0].name
+                    }
+
+                    if(typeof location.location.distance!=='undefined'){
+                        contentString = contentString+' </br> <strong>Distance:</strong> ' + location.location.distance+"m from city center"
+                    }
+                    contentString = contentString + '</div>'
 	        	// if there is already a window open than close it
                 if (infowindow) {
                     infowindow.close()
@@ -105,9 +119,11 @@ class MapContainer extends Component {
 
                 //add Content to Info window
                 infowindow = new google.maps.InfoWindow({ //google map specific
-                    content: location.name +" in Schorndorf "  + location.categories.name
+                    content: contentString
                 });
+
                 infowindow.open( this.map, marker)//google map specific
+                //infowindow.setAttribute('tabindex', '-1')
 
                 //add animation and highlight the marker
                 marker.setAnimation(google.maps.Animation.BOUNCE)
